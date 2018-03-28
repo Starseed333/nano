@@ -1,0 +1,29 @@
+{
+  "name": "nano",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Starseed333/nano.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Starseed333/nano/issues"
+  },
+  "homepage": "https://github.com/Starseed333/nano#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "method-override": "^2.3.10",
+    "mongoose": "^5.0.12",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}
