@@ -1,0 +1,10 @@
+<% include partials/header.ejs %>
+<!-- redirect server to the landing page -->
+
+  <h1> LANDING PAGE</h1>
+
+  <form action="/" method="post" enctype="multipart/form-data">
+    <input type="file" name="filename">
+    <input type="submit" value="upload">
+  </form>
+  <% include partials/footer.ejs %>

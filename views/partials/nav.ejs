@@ -1,0 +1,21 @@
+<nav class="nav2">
+  <ul class="nav-left container2">
+    <span class="brand-title">Nano Paws</span>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+
+    <li class="dropdown"> <a href="/image"> Image Gallery </a>
+
+    </li>
+    <li> <a href="/services">Services</a></li>
+
+    <li><a href="/contact">Contact</a></li>
+    <% if(!currentUser){%>
+      <li><a href="/register">Signup</a></li>
+      <li><a href="/login">Login</a></li>
+      <%} else {%>
+        <li> <a href="/logout">Logout </a></li>
+        <% }%>
+          
+  </ul>
+</nav>

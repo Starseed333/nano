@@ -1,0 +1,114 @@
+<% include partials/header.ejs %>
+
+  <header class="v-header container2">
+    <div class="fullscreen-video-wrap">
+      <!-- include the video here -->
+      <video src="/uploads/video" autoplay="true" loop="true" muted></video>
+    </div>
+    <div class="header-overlay"></div>
+    <nav>
+      <ul class="nav-left container2">
+        <span class="brand-title"> Nano Paws</span>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li class="dropdown"> <a href="/services"> Services </a>
+
+        </li>
+
+        <li><a href="/contact">Contact</a></li>
+        <!-- require implement authentication -->
+        <% if(!currentUser){%>
+          <li><a href="/register">Signup</a></li>
+          <li><a href="/login">Login</a></li>
+          <%} else {%>
+            <li> <a href="/logout">Logout </a></li>
+            <% }%>
+
+      </ul>
+    </nav>
+
+    <div class="header-content">
+      <% if(success && success.length>0){%>
+        <div class="alert-success">
+          <p>
+            <%=success%>
+          </p>
+        </div>
+        <%}%>
+          <h1>Nano Paws Grooming Salon &amp; </h1>
+          <h1> Pampered Pet Salon</h1> <a href="#" class="cta-btn">
+                Check it out!
+            </a> </div>
+  </header>
+  <!-- INCLUDE IMAGE GALLERY -->
+  <% include partials/gallery.ejs %>
+    <!-- INCLUDE GALLERY -->
+    <!-- Display Video -->
+    <div class="section-about-video">
+      <div class="container2">
+
+        <!-- video with play controls -->
+
+        <iframe src="https://videolinkfromcustomer" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <!-- close container2-->
+
+    </div>
+    <section id="section-services" class="container2">
+      <h2> Nano Paws <span class="underline">Grooming Salon</span> &amp; <span class="underline">Services</span></h2>
+
+      <div class="container2 flex service-box1">
+        <div class="col-1-of-2">
+          <!-- services image here -->
+          <img class="service-cover-img" src="/img/services.jpg" alt="">
+        </div>
+        <div class="col-1-of-2">
+          <h2 class="service-title">All About Nano Paws</h2>
+          <p>Our salon is small and personable.  Unlike some places, you will know who is grooming your dog.  I believe that an essential part of providing grooming service is building a personal relationship with my clients, so that you will receive personalized service, and never be treated like a number.  My goal is to greet all of my canine clients by name. </p>
+        </div>
+      </div>
+      <div class="container2 flex">
+
+        <div class="col-1-of-2 service-box"> <img src="/img/services.jpg" alt="">
+          <h2 class="service-title">What do I do?</h2>
+          <p>I am a Cosmetologist who advances in hair and makeup. My goal is to enhance the beauty that is already there. I believe in simplicity and letting my client’s beauty shine through. I also master in hairstyling, helping my clients’ find their
+            own personal style. </p>
+        </div>
+        <div class="col-1-of-2 service-box"> <img src="/img/carousel_3.jpg" alt="">
+          <h2 class="service-title">Why grooming?</h2>
+          <p>Having your dog groomed is essential for keeping your best friend's coat and skin healthy.  Nano Paws Salon uses the finest salon quality shampoos and conditioners to leave your pet with a healthy and soft coat.   </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section where use EJS to show Work images will be here, only images shown, perhaps hover text as well! -->
+    <section id="section-work2">
+      <div class="container2">
+        <h2>Recent <span class="underline">Work</span></h2>
+
+        <hr>
+        <%Works.forEach(function(workPost){%>
+          <div class="col-1-of-4">
+            <div class="textBlurredImg">
+              <img src="<%=workPost.image%>" alt="">
+              <h3 class="textTitleOverImg"><%=workPost.title %></h3>
+              <p>
+                <%=workPost.text%>
+              </p>
+            </div>
+            <!--blurredimg-->
+          </div>
+          <!-- end of col-1-of-4-->
+          <%})%>
+
+            <hr>
+      </div>
+    </section>
+    <!-- End of section work -->
+
+    
+
+
+
+    <!-- include footer -->
+    <% include partials/footer.ejs %>

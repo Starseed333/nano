@@ -38,7 +38,7 @@ app.set("view engine", "ejs")
 
 app.use(
 	require("express-session")({
-		secret: "Sandra Marquez",
+		secret: "Nano Paws",
 		resave: false,
 		saveUninitialized: false
 	})
@@ -66,7 +66,11 @@ app.get("*", function(req, res) {
 	res.redirect("/");
 })
 
+
+
+
+
 var port = process.env.PORT || 3000
 app.listen(port, function() {
-	console.log("Server is listening");
+	console.log("Server is listening " + port);
 })
