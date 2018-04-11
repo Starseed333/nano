@@ -1,0 +1,113 @@
+/*Contact Form*/
+.contact-header {
+	display: block;
+	max-width: 480px;
+	padding: 1.5rem 2px;
+}
+
+.contact-header h2 {
+	padding: 50px;
+}
+
+.contact-header .text-muted {
+	text-transform: none;
+	font-size: 100%;
+	margin: 8px 0;
+	text-align: left;
+}
+
+.text-muted a {
+	color: #f7c0af;
+	font-weight: 700;
+}
+
+#section-contact {
+	text-align: center;
+}
+
+.input-text {
+	text-align: center;
+	padding: 17px 0;
+	display: inline-block;
+	width: 32%;
+}
+
+.input-text:nth-child(2) {
+	margin: 0 1.5%;
+}
+
+.input-subject {
+	display: inline-block;
+	width: 49.5%;
+	margin: 1% auto;
+	text-align: center;
+	padding: 17px 0;
+}
+
+.input-text,
+.input-message,
+.input-subject {
+	font-size: 14px;
+}
+
+input,
+#input-comment,
+button {
+	background-color: #fff5f3;
+	border: 1px solid #ffded5;
+	font-color: black;
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+input:focus,
+textarea:focus {
+	outline: none;
+	border: 2px solid #ffd1c3;
+}
+
+.input-message {
+	text-align: center;
+	padding: 115px 0;
+	width: 99.75%;
+	margin-bottom: 80px;
+}
+
+.btn-contact,
+.delete-post {
+	background-color: white;
+	border: 2px solid #ffd1c3;
+	display: block;
+	text-align: center;
+	margin: 20px auto;
+	width: 30%;
+	padding: 12px;
+	text-transform: uppercase;
+}
+
+.btn-contact:hover {
+	color: #ffd1c3;
+}
+
+/*
+Register
+*/
+
+#section-login {
+	text-align: center;
+}
+
+#section-login p {
+	text-align: center;
+}
+
+#section-login .container2 {
+	max-width: 600px;
+}
+
+#section-login .input-subject {
+	text-transform: none;
+	margin: 15px 0;
+	width: 100%;
+	display: block;
+}
