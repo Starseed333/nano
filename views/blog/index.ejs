@@ -1,0 +1,46 @@
+<% include ../partials/header.ejs %>
+  <!-- include navbar & header -->
+  <% include ../partials/nav.ejs %>
+
+
+    <!-- include gallery -->
+    <% include ../partials/gallery.ejs %>
+
+      <section id="section-page-blog">
+        <div class="container2">
+          <hr>
+          <!-- only show this if the user is the owner or developer -->
+          <%if(!currentUser){ %>
+            <!-- nothing -->
+            <%}else{%>
+              <% if(currentUser.email == process.env.sandra_EMAIL || currentUser.email == process.env.owner_EMAIL){%>
+                <a href="/blog/new" class="blog-btn"> Create new new blog post</a>
+                <a href="/work/new" class="blog-btn"> create new work post</a>
+                <%}}%>
+
+                  <!-- loop display posts -->
+                  <% blogPosts.forEach(function(Post){ %>
+                    <div class="col-1-of-2 blog-post">
+                      <img src="<%= Post.image %>">
+                      <h2 class="blog-post-title"> <%= Post.title %></h2>
+                      <p class="blog-post-under-header">
+                        <%= Post.created.toDateString()%> /
+                          <span class="blog-tag">  <%= Post.tag%></span>
+                      </p>
+                      <a href="/blog/<%=Post._id %>" class="blog-btn"> Read Post</a>
+                      <!-- only logged in user nancy can delete these -->
+                      <% if(!currentUser){%>
+                        <!-- nothing -->
+                        <%}else{%>
+                          <% if(currentUser.email == process.env.sandra_EMAIL || currentUser.email == process.env.owner_EMAIL){%>
+                            <a href="/blog/<%=Post._id%>/edit" class="blog-btn"> EDIT POST </a>
+                            <%}}%>
+                    </div>
+                    <% }); %>
+                      <!-- end of loop-->
+                      <!-- only logged in user nancy can seethese -->
+
+        </div>
+      </section>
+
+      <% include ../partials/footer.ejs%>
