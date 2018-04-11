@@ -9,7 +9,7 @@ const flash = require("connect-flash");
 const Upload = require("express-fileupload");
 const LocalStrategy = require("passport-local");
 const validator = require("email-validator");
-
+const middleware = require("./middleware/index");
 //Models
 const blog = require("./models/blog");
 const User = require("./models/user");
@@ -72,18 +72,59 @@ app.use(function(req, res, next) {
 	res.locals.success = req.flash("success")
 	next()
 })
-
+/*
+Post request to /work, in app.js to make use of express file-upload
+*/
+app.post("/work", middleware.isOwnerOrDeveloper, function(req, res) {
+	console.log(req.files)
+	if (req.files) {
+		var file = req.files.filename,
+			filename = file.name
+			//customer images 
+		uploadName = "public/uploads/" + filename
+		file.mv(uploadName, function(err) {
+			if (err) {
+				//If error display error, and redirect to work
+				console.log(err)
+				req, flash("Error", "error uploading the image!")
+				res.redirect("/work")
+			} else {
+				console.log("Successfully uploaded")
+				//CREATE A NEW BLOG POST
+				var workUploadImage = "/uploads/" + filename
+				if (req.body.description.length > 45) {
+					console.log("Work Post description too long, error!")
+					req.flash("Error", "Description only 15 characters max")
+					return res.redirect("back")
+				}
+				var newWorkPost = {
+					title: req.body.name,
+					text: req.body.description,
+					image: workUploadImage
+				}
+				work.create(newWorkPost, function(err, newPost) {
+					if (err) {
+						req.flash("error", "Something went wrong making a post")
+						return res.redirect("back")
+						console.log("error trying to make new post")
+					} else {
+						console.log("Successfully made a nwe Work Post!")
+						req.flash("success", "success making a work post!")
+						res.redirect("/work")
+					}
+				})
+			}
+		})
+	}
+});
 
 app.get("*", function(req, res) {
 	//Default route, redirect to landing
 	res.redirect("/");
-})
-
-
-
+});
 
 
 var port = process.env.PORT || 3000
 app.listen(port, function() {
 	console.log("Server is listening " + port);
-})
+});
