@@ -8,6 +8,19 @@ const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const Upload = require("express-fileupload");
 const LocalStrategy = require("passport-local");
+const validator = require("email-validator");
+
+//Models
+const blog = require("./models/blog");
+const User = require("./models/user");
+const Work = require("./models/work");
+const comment = require("./models/comment");
+
+
+//Express Router
+
+const authRoutes = require("./routes/auth");
+
 
 
 //Mongo Database
